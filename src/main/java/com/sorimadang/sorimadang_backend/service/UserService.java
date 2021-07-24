@@ -19,6 +19,6 @@ public class UserService {
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
         );
         user.update(userRequestDto);
-        return user.getUser_id();
+        return user.getUserId();
     }
 }
