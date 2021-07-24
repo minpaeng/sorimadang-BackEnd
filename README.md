@@ -6,7 +6,7 @@
 |----------|-----|---------|-----------|-------------|
   |회원가입   |POST|api/users/signup|{<br/>"id":"123abc",<br/> "password":"abcd1234"<br/>}|succes { "code" : 200, "message" : "Success" }<br/>fail { "code" : 500, "message" : "Fail" }|
 |로그인|POST|api/users/login|{<br/>"id":"123abc",<br/> "password":"abcd1234"<br/>}|succes { "code" : 200, "message" : "Success" }<br/>fail { "code" : 500, "message" : "Fail" }|
-|닉네임 입력/수정|PUT|api/users|{<br/>"id":"123abc"<br/>}|succes { "code" : 200, "message" : "Success" }<br/>fail { "code" : 500, "message" : "Fail" }|
+|닉네임 입력/수정|PUT|api/users|{<br/>"id":"123abc",<br/> "nickname":"도드리"<br/>}|succes { "code" : 200, "message" : "Success" }<br/>fail { "code" : 500, "message" : "Fail" }|
 
 
 <br/><br/>
