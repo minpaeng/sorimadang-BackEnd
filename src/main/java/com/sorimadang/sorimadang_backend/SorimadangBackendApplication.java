@@ -25,6 +25,8 @@ public class SorimadangBackendApplication {
             gameOXQuizRepository.save(new GameOXQuiz("11", 1, 1, "가야금은 12줄이다.", 1));
             gameOXQuizRepository.save(new GameOXQuiz("12", 1, 2, "가야금은 1줄이다.", 0));
             wrongQuizRepository.save(new WrongQuiz("dodo", 1, 1, "가야금은 12줄이다.", 1));
+            wrongQuizRepository.save(new WrongQuiz("dodo", 1, 2, "가야금은 1줄이다.", 0));
+
 
             System.out.println("데이터 인쇄");
             List<GameOXQuiz> quizList = gameOXQuizRepository.findAll();

@@ -38,6 +38,8 @@ public class WrongQuiz {
 
     public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
         this.userId = wrongQuizRequestDto.getUserId();
+        this.stageNum = wrongQuizRequestDto.getStageNum();
+        this.quizNum = wrongQuizRequestDto.getQuizNum();
         this.quiz = wrongQuizRequestDto.getQuiz();
         this.answer = wrongQuizRequestDto.getAnswer();
     }
