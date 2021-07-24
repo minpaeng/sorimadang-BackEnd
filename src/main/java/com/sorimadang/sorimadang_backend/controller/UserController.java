@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-public class UserController {
+public class UserController extends LoginCheck{
     private final UserRepository userRepository;
     private final WrongQuizRepository wrongQuizRepository;
     private final UserService userService;
@@ -31,27 +31,32 @@ public class UserController {
     // 로그인 -> 그 회원의 오답 정보 가져와야 함
     @PostMapping("/api/users/login")
     public List<WrongQuiz> getUser(@RequestBody UserRequestDto requestDto) {
-        /*List<User> users = userRepository.findByUser_id(id);
-        String pw = null;
-        for(int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            pw = user.getPassword();
-        }
-        if(requestDto.getPassword() == pw) {
-            return wrongQuizRepository.findAllByUserId(id);
-        }
-        else {
-          WrongQuiz wrongQuiz = new WrongQuiz(id, 0, 0, "로그인 실패", 0);
-          List<WrongQuiz> list = new ArrayList<WrongQuiz>();
-          list.add(wrongQuiz);
-            return list;
-        }*/
-        return wrongQuizRepository.findAllByUserId(requestDto.getUser_id());
+        return loginCheck(userRepository, wrongQuizRepository, requestDto);
+        //return wrongQuizRepository.findAllByUserId(requestDto.getUser_id());
     }
 
     // 닉네임 수정
     @PutMapping("api/users")
     public String updateNickname(@RequestBody UserRequestDto requestDto) {
         return userService.update(requestDto.getUser_id(), requestDto);
+    }
+}
+
+class LoginCheck{
+    //로그인 성공 여부 확인
+    protected List<WrongQuiz> loginCheck(
+            UserRepository userRepository, WrongQuizRepository wrongQuizRepository, UserRequestDto requestDto) {
+        User user = userRepository.findById(requestDto.getUser_id()).orElseThrow(
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다."));
+        String pw = user.getPassword();
+        if(requestDto.getPassword().equals(pw)) {
+            return wrongQuizRepository.findAllByUserId(requestDto.getUser_id());
+        }
+        else {
+            WrongQuiz wrongQuiz = new WrongQuiz(requestDto.getUser_id(), 0, 0, "로그인 실패", 0);
+            List<WrongQuiz> list = new ArrayList();
+            list.add(wrongQuiz);
+            return list;
+        }
     }
 }
