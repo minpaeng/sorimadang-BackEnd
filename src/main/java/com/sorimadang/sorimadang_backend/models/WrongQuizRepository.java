@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface WrongQuizRepository extends JpaRepository<WrongQuiz, WrongQuizKeys> {
+public interface WrongQuizRepository extends JpaRepository<WrongQuiz, String> {
     List<WrongQuiz> findAllByUserId(String id);
 }
