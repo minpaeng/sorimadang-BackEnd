@@ -20,13 +20,13 @@ public class User {
     @Column
     private String nickname;
 
-    public  User(String user_id, String password, String nickname) {
+    public User(String user_id, String password, String nickname) {
         this.user_id = user_id;
         this.password = password;
         this.nickname = nickname;
     }
 
-    public  User(UserRequestDto userRequestDto) {
+    public User(UserRequestDto userRequestDto) {
         this.user_id = userRequestDto.getUser_id();
         this.password = userRequestDto.getPassword();
         this.nickname = userRequestDto.getNickname();

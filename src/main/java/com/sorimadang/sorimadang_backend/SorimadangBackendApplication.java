@@ -1,7 +1,7 @@
 package com.sorimadang.sorimadang_backend;
 
-import com.sorimadang.sorimadang_backend.models.GameOXQuiz;
-import com.sorimadang.sorimadang_backend.models.GameOXQuizRepository;
+import com.sorimadang.sorimadang_backend.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,10 +19,11 @@ public class SorimadangBackendApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(GameOXQuizRepository gameOXQuizRepository) {
+    public CommandLineRunner demo(GameOXQuizRepository gameOXQuizRepository, WrongQuizRepository wrongQuizRepository) {
         return (args) -> {
             gameOXQuizRepository.save(new GameOXQuiz("11", 1, 1, "가야금은 12줄이다.", 1));
             gameOXQuizRepository.save(new GameOXQuiz("12", 1, 2, "가야금은 1줄이다.", 0));
+            wrongQuizRepository.save(new WrongQuiz(new WrongQuizKeys("dodo", 1, 1), "가야금은 12줄이다.", 1));
 
             System.out.println("데이터 인쇄");
             List<GameOXQuiz> quizList = gameOXQuizRepository.findAll();

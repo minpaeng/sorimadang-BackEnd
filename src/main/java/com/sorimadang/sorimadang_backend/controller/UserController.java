@@ -14,22 +14,27 @@ public class UserController {
     private final WrongQuizRepository wrongQuizRepository;
     private final UserService userService;
 
+    // 회원정보 조회
     @GetMapping("/api/users")
     public List<User> getUser() {
         return userRepository.findAll();
     }
 
+    // 회원가입
     @PostMapping("/api/users/signup")
     public User createUser(@RequestBody UserRequestDto requestDto) {
         User user = new User(requestDto);
         return userRepository.save(user);
     }
 
+    // 로그인 -> 그 회원의 오답 정보 가져와야 함
     /*@PostMapping("/api/users/login")
     public WrongQuiz getUser(@RequestBody UserRequestDto requestDto) {
-        List<User> user = wrongQuizRepository.
+        WrongQuizKeys wrongQuizKeys = new WrongQuizKeys();
+
     }*/
 
+    // 닉네임 수정
     @PutMapping("api/users")
     public String updateNickname(@RequestBody UserRequestDto requestDto) {
         return userService.update(requestDto.getUser_id(), requestDto);
