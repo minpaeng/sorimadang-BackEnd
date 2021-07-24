@@ -28,11 +28,11 @@ public class UserController {
     }
 
     // 로그인 -> 그 회원의 오답 정보 가져와야 함
-    /*@PostMapping("/api/users/login")
-    public WrongQuiz getUser(@RequestBody UserRequestDto requestDto) {
-        WrongQuizKeys wrongQuizKeys = new WrongQuizKeys();
+    @PostMapping("/api/users/login/{id}")
+    public List<WrongQuiz> getUser(@PathVariable String id,@RequestBody UserRequestDto requestDto) {
+        return wrongQuizRepository.findAllByUserId(id);
 
-    }*/
+    }
 
     // 닉네임 수정
     @PutMapping("api/users")
