@@ -30,7 +30,7 @@ public class UserController {
 
     // 로그인 -> 그 회원의 오답 정보 가져와야 함
     @PostMapping("/api/users/login")
-    public List<WrongQuiz> getUser(@PathVariable String id,@RequestBody UserRequestDto requestDto) {
+    public List<WrongQuiz> getUser(@RequestBody UserRequestDto requestDto) {
         /*List<User> users = userRepository.findByUser_id(id);
         String pw = null;
         for(int i = 0; i < users.size(); i++) {
