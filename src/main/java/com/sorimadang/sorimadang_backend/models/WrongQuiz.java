@@ -16,13 +16,13 @@ public class WrongQuiz {
     private Long serial_id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user_id;
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum"),
-            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum")
+            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum", nullable = false),
+            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum", nullable = false)
     })
     private GameOXQuiz gameOXQuiz;
 
