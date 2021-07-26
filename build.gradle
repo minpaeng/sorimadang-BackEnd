@@ -26,6 +26,9 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa
+    //implementation group: 'com.querydsl', name: 'querydsl-jpa', version: '4.1.4'
+
 }
 
 test {
