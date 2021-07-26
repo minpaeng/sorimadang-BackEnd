@@ -1,5 +1,9 @@
 > # API Reference
 
+select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정보) 테이블 외래키 사용
+
+<br/>
+
 * users - 로그인 시 해당 유저의 오답 정보 가져옴
 
 |기능|Method|URL|Request|Response|
