@@ -13,21 +13,21 @@ public class WrongQuiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long serial_id;
+    private Long serialId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user_id;
+    @JoinColumn(name = "userId", nullable = false)
+    private User userId;
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum"),
-            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum")
+            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum", nullable = false),
+            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum", nullable = false)
     })
     private GameOXQuiz gameOXQuiz;
 
     public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
-        this.user_id = wrongQuizRequestDto.getUser_id();
+        this.userId = wrongQuizRequestDto.getUserId();
         this.gameOXQuiz = wrongQuizRequestDto.getGameOXQuiz();
     }
 
