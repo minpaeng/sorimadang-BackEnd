@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
-public class User {
+public class User{
     @Id
-    @Column(name = "userId")
     private String userId;
 
     @Column(nullable = false)
@@ -36,5 +37,4 @@ public class User {
     public void update(UserRequestDto userRequestDto) {
         this.nickname = userRequestDto.getNickname();
     }
-
 }

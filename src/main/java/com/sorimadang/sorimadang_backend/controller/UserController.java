@@ -3,6 +3,7 @@ package com.sorimadang.sorimadang_backend.controller;
 import com.sorimadang.sorimadang_backend.models.*;
 import com.sorimadang.sorimadang_backend.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 public class UserController extends LoginCheck{
     private final UserRepository userRepository;
+    @Autowired
     private final WrongQuizRepository wrongQuizRepository;
     private final UserService userService;
 
@@ -34,6 +36,10 @@ public class UserController extends LoginCheck{
         return loginCheck(userRepository, wrongQuizRepository, requestDto);
 
         //return wrongQuizRepository.findAllByUserId(requestDto.getUser_id());
+
+        /*String name = requestDto.getUserId();
+        System.out.println("유저아이디 : " + name);
+        return wrongQuizRepository.findByUserId(name);*/
     }
 
     // 닉네임 수정
@@ -51,13 +57,10 @@ class LoginCheck{
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다."));
         String pw = user.getPassword();
         if(requestDto.getPassword().equals(pw)) {
-            return wrongQuizRepository.findAllByUserId(requestDto.getUserId());
+            return wrongQuizRepository.findByUserId(requestDto.getUserId());
         }
         else {
-            WrongQuiz wrongQuiz = new WrongQuiz(requestDto.getUserId(), 0, 0, "로그인 실패", 0);
-            List<WrongQuiz> list = new ArrayList();
-            list.add(wrongQuiz);
-            return list;
+            return null;
         }
     }
 }

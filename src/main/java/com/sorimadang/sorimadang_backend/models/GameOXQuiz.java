@@ -6,18 +6,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 
 @Getter
 @Entity
 @NoArgsConstructor
+@IdClass(GameOXQuizKeys.class)
 public class GameOXQuiz {
     @Id
-    private String id;
-
-    @Column(nullable = false)
+    @Column(name = "stageNum", nullable = false)
     private int stageNum;
 
-    @Column(nullable = false)
+    @Id
+    @Column(name = "quizNum", nullable = false)
     private int quizNum;
 
     @Column(nullable = false)
@@ -26,8 +27,7 @@ public class GameOXQuiz {
     @Column(nullable = false)
     private int answer;
 
-    public GameOXQuiz(String id, int stageNum, int quizNum, String quiz, int answer) {
-        this.id = id;
+    public GameOXQuiz(int stageNum, int quizNum, String quiz, int answer) {
         this.stageNum = stageNum;
         this.quizNum = quizNum;
         this.quiz = quiz;

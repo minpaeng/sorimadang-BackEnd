@@ -6,9 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class WrongQuizRequestDto {
-    private String userId;
-    private int stageNum;
-    private int quizNum;
-    private String quiz;
-    private int answer;
+    private Long serialId;
+    private User userId;
+    private GameOXQuiz gameOXQuiz;
 }
