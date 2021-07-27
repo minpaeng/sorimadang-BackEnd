@@ -7,27 +7,26 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(name = "WRONGQUIZ")
 @NoArgsConstructor
 public class WrongQuiz {
-    @EmbeddedId
-    protected WrongQuizKeys wrongQuizKeys;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long serialId;
 
-    @Column(nullable = false)
-    private String quiz;
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User userId;
 
-    @Column(nullable = false)
-    private int answer;
-
-    public WrongQuiz(WrongQuizKeys wrongQuizKeys, String quiz, int answer) {
-        this.wrongQuizKeys = wrongQuizKeys;
-        this.quiz = quiz;
-        this.answer = answer;
-    }
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum", nullable = false),
+            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum", nullable = false)
+    })
+    private GameOXQuiz gameOXQuiz;
 
     public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
-        this.wrongQuizKeys = wrongQuizRequestDto.getWrongQuizKeys();
-        this.quiz = wrongQuizRequestDto.getQuiz();
-        this.answer = wrongQuizRequestDto.getAnswer();
+        this.userId = wrongQuizRequestDto.getUserId();
+        this.gameOXQuiz = wrongQuizRequestDto.getGameOXQuiz();
     }
-
 }
