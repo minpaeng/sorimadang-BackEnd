@@ -9,8 +9,18 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 public class WrongQuiz {
-    @EmbeddedId
-    protected WrongQuizKeys wrongQuizKeys;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private String userId;
+
+    @Column(nullable = false)
+    private int stageNum;
+
+    @Column(nullable = false)
+    private int quizNum;
 
     @Column(nullable = false)
     private String quiz;
@@ -18,14 +28,18 @@ public class WrongQuiz {
     @Column(nullable = false)
     private int answer;
 
-    public WrongQuiz(WrongQuizKeys wrongQuizKeys, String quiz, int answer) {
-        this.wrongQuizKeys = wrongQuizKeys;
+    public WrongQuiz(String userId, int stageNum, int quizNum, String quiz, int answer) {
+        this.userId = userId;
+        this.stageNum = stageNum;
+        this.quizNum = quizNum;
         this.quiz = quiz;
         this.answer = answer;
     }
 
     public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
-        this.wrongQuizKeys = wrongQuizRequestDto.getWrongQuizKeys();
+        this.userId = wrongQuizRequestDto.getUserId();
+        this.stageNum = wrongQuizRequestDto.getStageNum();
+        this.quizNum = wrongQuizRequestDto.getQuizNum();
         this.quiz = wrongQuizRequestDto.getQuiz();
         this.answer = wrongQuizRequestDto.getAnswer();
     }

@@ -12,7 +12,8 @@ import javax.persistence.Id;
 @Getter
 public class User {
     @Id
-    private String user_id;
+    @Column(name = "userId")
+    private String userId;
 
     @Column(nullable = false)
     private String password;
@@ -20,14 +21,14 @@ public class User {
     @Column
     private String nickname;
 
-    public User(String user_id, String password, String nickname) {
-        this.user_id = user_id;
+    public User(String userId, String password, String nickname) {
+        this.userId = userId;
         this.password = password;
         this.nickname = nickname;
     }
 
     public User(UserRequestDto userRequestDto) {
-        this.user_id = userRequestDto.getUser_id();
+        this.userId = userRequestDto.getUserId();
         this.password = userRequestDto.getPassword();
         this.nickname = userRequestDto.getNickname();
     }

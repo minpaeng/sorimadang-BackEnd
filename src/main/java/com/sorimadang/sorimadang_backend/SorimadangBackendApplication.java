@@ -19,11 +19,14 @@ public class SorimadangBackendApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(GameOXQuizRepository gameOXQuizRepository, WrongQuizRepository wrongQuizRepository) {
+    public CommandLineRunner demo(UserRepository userRepository, GameOXQuizRepository gameOXQuizRepository, WrongQuizRepository wrongQuizRepository) {
         return (args) -> {
+            userRepository.save(new User("dodo", "sdfdsf", "도드리"));
             gameOXQuizRepository.save(new GameOXQuiz("11", 1, 1, "가야금은 12줄이다.", 1));
             gameOXQuizRepository.save(new GameOXQuiz("12", 1, 2, "가야금은 1줄이다.", 0));
-            wrongQuizRepository.save(new WrongQuiz(new WrongQuizKeys("dodo", 1, 1), "가야금은 12줄이다.", 1));
+            wrongQuizRepository.save(new WrongQuiz("dodo", 1, 1, "가야금은 12줄이다.", 1));
+            wrongQuizRepository.save(new WrongQuiz("dodo", 1, 2, "가야금은 1줄이다.", 0));
+
 
             System.out.println("데이터 인쇄");
             List<GameOXQuiz> quizList = gameOXQuizRepository.findAll();

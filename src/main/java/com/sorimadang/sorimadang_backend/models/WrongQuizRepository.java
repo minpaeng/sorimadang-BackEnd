@@ -2,5 +2,8 @@ package com.sorimadang.sorimadang_backend.models;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WrongQuizRepository extends JpaRepository<WrongQuiz, WrongQuizKeys> {
+import java.util.List;
+
+public interface WrongQuizRepository extends JpaRepository<WrongQuiz, String> {
+    List<WrongQuiz> findAllByUserId(String id);
 }
