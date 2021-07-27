@@ -13,11 +13,11 @@ public class WrongQuiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long serial_id;
+    private Long serialId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user_id;
+    @JoinColumn(name = "userId", nullable = false)
+    private User userId;
 
     @ManyToOne
     @JoinColumns({
@@ -27,7 +27,7 @@ public class WrongQuiz {
     private GameOXQuiz gameOXQuiz;
 
     public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
-        this.user_id = wrongQuizRequestDto.getUser_id();
+        this.userId = wrongQuizRequestDto.getUserId();
         this.gameOXQuiz = wrongQuizRequestDto.getGameOXQuiz();
     }
 

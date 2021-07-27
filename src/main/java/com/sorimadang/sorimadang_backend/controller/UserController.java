@@ -38,7 +38,7 @@ public class UserController extends LoginCheck{
     // 닉네임 수정
     @PutMapping("api/users")
     public String updateNickname(@RequestBody UserRequestDto requestDto) {
-        return userService.update(requestDto.getUser_id(), requestDto);
+        return userService.update(requestDto.getUserId(), requestDto);
     }
 }
 
@@ -46,11 +46,11 @@ class LoginCheck{
     //로그인 성공 여부 확인
     protected List<WrongQuiz> loginCheck(
             UserRepository userRepository, WrongQuizRepository wrongQuizRepository, UserRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUser_id()).orElseThrow(
+        User user = userRepository.findById(requestDto.getUserId()).orElseThrow(
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다."));
         String pw = user.getPassword();
         if(requestDto.getPassword().equals(pw)) {
-            return wrongQuizRepository.findByUserId(requestDto.getUser_id());
+            return wrongQuizRepository.findByUserId(requestDto.getUserId());
         }
         else {
             System.out.println("비밀번호가 틀렸습니다. ");
