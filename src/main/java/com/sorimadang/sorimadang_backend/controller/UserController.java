@@ -32,6 +32,7 @@ public class UserController extends LoginCheck{
     @PostMapping("/api/users/login")
     public List<WrongQuiz> getUser(@RequestBody UserRequestDto requestDto) {
         return loginCheck(userRepository, wrongQuizRepository, requestDto);
+
         //return wrongQuizRepository.findAllByUserId(requestDto.getUser_id());
     }
 
