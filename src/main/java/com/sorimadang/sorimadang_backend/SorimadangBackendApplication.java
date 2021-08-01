@@ -15,20 +15,12 @@ public class SorimadangBackendApplication {
         SpringApplication.run(SorimadangBackendApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner demo(UserRepository userRepository, GameOXQuizRepository gameOXQuizRepository) {
+    /*@Bean
+    public CommandLineRunner demo(UserRepository userRepository,
+                                  GameOXQuizRepository gameOXQuizRepository,
+                                  WrongQuizRepository wrongQuizRepository) {
         return (args) -> {
-            // 유저 정보 추가
-            userRepository.save(new User("yeopx2", "ramram", "엽엽"));
-            userRepository.save(new User("hihi12", "hello123", ""));
-            userRepository.save(new User("jiyeah3108", "jiye215", "람지"));
-
-            // 문제 추가
-            gameOXQuizRepository.save(new GameOXQuiz(1, 1, "가야금은 12줄이다.", 1));
-            gameOXQuizRepository.save(new GameOXQuiz(1, 2, "가야금은 1줄이다.", 0));
-
             System.out.println("성공");
         };
-    }
-
+    }*/
 }
