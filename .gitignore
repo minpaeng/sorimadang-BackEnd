@@ -35,4 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### custom file ###
 application-oauth.properties
