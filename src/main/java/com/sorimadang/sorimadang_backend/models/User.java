@@ -1,40 +1,48 @@
 package com.sorimadang.sorimadang_backend.models;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@NoArgsConstructor
+//자동 접속 시간 구현 추가 잊지말기
 @Getter
+@NoArgsConstructor
+@Entity
 public class User{
     @Id
     private String userId;
 
-    @Column(nullable = false)
-    private String password;
-
     @Column
     private String nickname;
 
-    public User(String userId, String password, String nickname) {
+    @Column
+    private String idToken;
+
+    @Column
+    private String refreshToken;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    @Builder
+    public User(String userId, String nickname, Role role) {
         this.userId = userId;
-        this.password = password;
         this.nickname = nickname;
+        this.role = role;
     }
 
-    public User(UserRequestDto userRequestDto) {
-        this.userId = userRequestDto.getUserId();
-        this.password = userRequestDto.getPassword();
-        this.nickname = userRequestDto.getNickname();
+    public User update(String nickname) {
+        this.nickname = nickname;
+
+        return this;
     }
 
-    public void update(UserRequestDto userRequestDto) {
-        this.nickname = userRequestDto.getNickname();
+    public String getRoleKey() {
+        return this.role.getKey();
     }
 }
