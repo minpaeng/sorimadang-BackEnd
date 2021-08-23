@@ -38,3 +38,4 @@ out/
 
 ### custom file ###
 application-oauth.properties
+application.properties
