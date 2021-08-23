@@ -36,7 +36,7 @@ public class UserService {
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
 
         //web client-id...이렇게박제하면안되는데..ㅠㅠ 어캐하는거람...^^
-        String CLIENT_ID = "658189587984-0p4u3e581mings7ahslnnuugvtdq9e5p.apps.googleusercontent.com";
+        String CLIENT_ID = "내 web client-id 입력";
         //GoogleIdTokenVerifier 객체 반환받기: idToken을 검증하기 위해 필요함
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
                 //백엔드에 접근하는 client_id(web client-id)
