@@ -1,8 +1,8 @@
 package com.sorimadang.sorimadang_backend.controller;
 
-import com.sorimadang.sorimadang_backend.models.WrongQuiz;
-import com.sorimadang.sorimadang_backend.models.WrongQuizRepository;
-import com.sorimadang.sorimadang_backend.models.WrongQuizRequestDto;
+import com.sorimadang.sorimadang_backend.domain.WrongQuiz;
+import com.sorimadang.sorimadang_backend.repository.WrongQuizRepository;
+import com.sorimadang.sorimadang_backend.dto.wrongQuiz.WrongQuizRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

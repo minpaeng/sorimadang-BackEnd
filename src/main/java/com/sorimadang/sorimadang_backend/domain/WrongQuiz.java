@@ -1,5 +1,8 @@
-package com.sorimadang.sorimadang_backend.models;
+package com.sorimadang.sorimadang_backend.domain;
 
+import com.sorimadang.sorimadang_backend.domain.GameOXQuiz;
+import com.sorimadang.sorimadang_backend.domain.User;
+import com.sorimadang.sorimadang_backend.dto.wrongQuiz.WrongQuizRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

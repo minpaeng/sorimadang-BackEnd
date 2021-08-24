@@ -1,5 +1,6 @@
-package com.sorimadang.sorimadang_backend.models;
+package com.sorimadang.sorimadang_backend.repository;
 
+import com.sorimadang.sorimadang_backend.domain.WrongQuiz;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

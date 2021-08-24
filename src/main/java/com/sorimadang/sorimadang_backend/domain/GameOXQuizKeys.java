@@ -1,4 +1,4 @@
-package com.sorimadang.sorimadang_backend.models;
+package com.sorimadang.sorimadang_backend.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

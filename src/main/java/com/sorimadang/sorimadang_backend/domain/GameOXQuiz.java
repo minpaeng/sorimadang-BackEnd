@@ -1,5 +1,6 @@
-package com.sorimadang.sorimadang_backend.models;
+package com.sorimadang.sorimadang_backend.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 @Getter
-@Entity
 @NoArgsConstructor
 @IdClass(GameOXQuizKeys.class)
+@Entity
 public class GameOXQuiz {
     @Id
     @Column(name = "stageNum", nullable = false)
@@ -27,6 +28,7 @@ public class GameOXQuiz {
     @Column(nullable = false)
     private int answer;
 
+    @Builder
     public GameOXQuiz(int stageNum, int quizNum, String quiz, int answer) {
         this.stageNum = stageNum;
         this.quizNum = quizNum;
