@@ -43,7 +43,7 @@ public class UserController{
     }
 
     //로그인: 토큰 입력
-    @PostMapping("/user")
+    @PostMapping("/api/user")
     public User login(@RequestBody LoginRequestDto requestDto) throws GeneralSecurityException, IOException {
         String email = userService.verifyToken(requestDto.getIdToken());
         if(email == null) throw new IOException("잘못된 접근입니다.");

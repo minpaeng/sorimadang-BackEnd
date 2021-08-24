@@ -28,7 +28,7 @@ public class UserService {
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
 
         //web client-id...이렇게박제하면안되는데..ㅠㅠ 어캐하는거람...^^
-        String CLIENT_ID = "클라이언트아이디 입력";
+        String CLIENT_ID = "클라이언트 아이디 입력";
         //GoogleIdTokenVerifier 객체 반환받기: idToken을 검증하기 위해 필요함
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
                 //백엔드에 접근하는 client_id(web client-id)
