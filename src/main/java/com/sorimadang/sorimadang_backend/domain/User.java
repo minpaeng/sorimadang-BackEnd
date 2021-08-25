@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 //자동 접속 시간 구현 추가 잊지말기
 @Getter
@@ -17,6 +18,9 @@ public class User extends Timestamped {
 
     @Column
     private String nickname;
+
+    @OneToMany(mappedBy = "email")
+    List<WrongQuiz> wrongQuizs;
 
     @Builder
     public User(String email, String nickname) {

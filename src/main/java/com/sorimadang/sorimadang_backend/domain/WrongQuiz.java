@@ -3,6 +3,7 @@ package com.sorimadang.sorimadang_backend.domain;
 import com.sorimadang.sorimadang_backend.domain.GameOXQuiz;
 import com.sorimadang.sorimadang_backend.domain.User;
 import com.sorimadang.sorimadang_backend.dto.wrongQuiz.WrongQuizRequestDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,8 +19,8 @@ public class WrongQuiz {
     private Long serialId;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User userId;
+    @JoinColumn(name = "email", nullable = false)
+    private User email;
 
     @ManyToOne
     @JoinColumns({
@@ -28,8 +29,10 @@ public class WrongQuiz {
     })
     private GameOXQuiz gameOXQuiz;
 
-    public WrongQuiz(WrongQuizRequestDto wrongQuizRequestDto) {
-        this.userId = wrongQuizRequestDto.getUserId();
-        this.gameOXQuiz = wrongQuizRequestDto.getGameOXQuiz();
+    @Builder
+    public WrongQuiz(User email, GameOXQuiz gameOXQuiz) {
+        this.email = email;
+        this.gameOXQuiz = gameOXQuiz;
     }
+
 }

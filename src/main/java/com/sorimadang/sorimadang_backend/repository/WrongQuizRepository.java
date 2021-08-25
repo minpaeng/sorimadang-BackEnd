@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface WrongQuizRepository extends JpaRepository<WrongQuiz, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM wrongquiz as w WHERE w.user_id IN (:name)")
-    List<WrongQuiz> findByUserId(@Param("name") String name);
+    List<WrongQuiz> findByEmail(@Param("name") String name);
 
     //List<WrongQuiz> findAllByUserId(String id);
 }
