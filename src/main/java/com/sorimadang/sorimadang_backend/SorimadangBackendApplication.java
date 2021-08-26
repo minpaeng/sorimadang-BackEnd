@@ -19,7 +19,7 @@ public class SorimadangBackendApplication {
     @Bean
     public CommandLineRunner demo(UserRepository userRepository) {
         return (args) -> {
-            userRepository.findAll();
+            //System.out.println("성공");
         };
     }
 }
