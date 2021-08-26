@@ -1,7 +1,7 @@
 package com.sorimadang.sorimadang_backend.controller;
 
-import com.sorimadang.sorimadang_backend.models.GameOXQuiz;
-import com.sorimadang.sorimadang_backend.models.GameOXQuizRepository;
+import com.sorimadang.sorimadang_backend.domain.GameOXQuiz;
+import com.sorimadang.sorimadang_backend.repository.GameOXQuizRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

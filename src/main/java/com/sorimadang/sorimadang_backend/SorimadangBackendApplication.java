@@ -1,6 +1,6 @@
 package com.sorimadang.sorimadang_backend;
 
-import com.sorimadang.sorimadang_backend.models.*;
+import com.sorimadang.sorimadang_backend.repository.UserRepository;
 import com.sorimadang.sorimadang_backend.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +17,7 @@ public class SorimadangBackendApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(UserService userService) {
+    public CommandLineRunner demo(UserRepository userRepository) {
         return (args) -> {
             //System.out.println("성공");
         };

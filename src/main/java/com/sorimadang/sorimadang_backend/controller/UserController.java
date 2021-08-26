@@ -1,20 +1,22 @@
 package com.sorimadang.sorimadang_backend.controller;
 
-import com.sorimadang.sorimadang_backend.models.*;
+import com.sorimadang.sorimadang_backend.domain.User;
+import com.sorimadang.sorimadang_backend.dto.user.DeleteRequestDto;
+import com.sorimadang.sorimadang_backend.dto.user.LoginRequestDto;
+import com.sorimadang.sorimadang_backend.dto.user.NicknameUpdateRequestDto;
+import com.sorimadang.sorimadang_backend.repository.UserRepository;
 import com.sorimadang.sorimadang_backend.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 public class UserController{
     private final UserRepository userRepository;
-    @Autowired
-    private final WrongQuizRepository wrongQuizRepository;
     private final UserService userService;
 
     // 회원정보 조회
@@ -24,19 +26,32 @@ public class UserController{
     }
 
     // 닉네임 수정
-    @PutMapping("api/users")
-    public String updateNickname(@RequestBody UserRequestDto requestDto) {
-        return userService.update(requestDto.getUserId(), requestDto);
+    @PutMapping("/api/user")
+    public String updateNickname(@RequestBody NicknameUpdateRequestDto requestDto) throws GeneralSecurityException, IOException {
+        return userService.update(requestDto);
     }
 
-    //토큰 입력
-    /*@PostMapping("/tokensignin")
-    public void sendToken(@RequestBody String idToken) {
-        userService.validateToken();
-        if(userService.isUser()) {
-            userService.saveUser();
-        } else {
+    // 회원 탈퇴
+    @DeleteMapping("/api/user")
+    public String deleteUser(@RequestBody DeleteRequestDto requestDto) throws GeneralSecurityException, IOException {
+        //토큰 검증 및 email 리턴받기
+        String email = userService.verifyToken(requestDto.getIdToken());
+        User user = userRepository.findById(email)
+                .orElseThrow(() -> new IllegalArgumentException("해당하는 계정이 없습니다."));
+        userRepository.delete(user);
+        return email;
+    }
 
-        }
-    }*/
+    //로그인: 토큰 입력
+    @PostMapping("/api/user")
+    public User login(@RequestBody LoginRequestDto requestDto) throws GeneralSecurityException, IOException {
+        String email = userService.verifyToken(requestDto.getIdToken());
+        if(email == null) throw new IOException("잘못된 접근입니다.");
+        String s = "signIn";
+        User user = userRepository.findById(email)
+                .orElse(
+                        userRepository.save(requestDto.toEntity(email))
+                );
+        return user;
+    }
 }
