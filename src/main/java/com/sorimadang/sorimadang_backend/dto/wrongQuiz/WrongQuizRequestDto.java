@@ -10,10 +10,9 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Getter
 public class WrongQuizRequestDto {
-    private Long serialId;
     private String idToken;
-    private int stageNum;
-    private int quizNum;
+    private int stage_num;
+    private int quiz_num;
 
     public WrongQuiz toEntity(User user, GameOXQuiz gameOXQuiz) {
         return WrongQuiz.builder()

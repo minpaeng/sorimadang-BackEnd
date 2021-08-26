@@ -9,12 +9,12 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 public class GameOXQuizKeys implements Serializable {
-    private int stageNum;
-    private int quizNum;
+    private int stage_num;
+    private int quiz_num;
 
     @Builder
-    public GameOXQuizKeys(int stageNum, int quizNum) {
-        this.stageNum = stageNum;
-        this.quizNum = quizNum;
+    public GameOXQuizKeys(int stage_num, int quiz_num) {
+        this.stage_num = stage_num;
+        this.quiz_num = quiz_num;
     }
 }

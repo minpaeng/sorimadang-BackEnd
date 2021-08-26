@@ -39,10 +39,9 @@ public class UserService {
 
         // POST로 받은 idToken을 파라미터로 넘겨 토큰 검증
         GoogleIdToken idToken = verifier.verify(idTokenString);
-        System.out.println("idToken = " + idToken);
+
         //검증 결과 유효한 토큰일 때 처리
         if (idToken != null) {
-            System.out.println("not empty");
             //계정 정보가 담긴 payload
             GoogleIdToken.Payload payload = idToken.getPayload();
 

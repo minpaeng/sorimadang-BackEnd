@@ -4,10 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -15,12 +13,12 @@ import javax.persistence.IdClass;
 @Entity
 public class GameOXQuiz {
     @Id
-    @Column(name = "stageNum", nullable = false)
-    private int stageNum;
+    @Column(nullable = false)
+    private int stage_num;
 
     @Id
-    @Column(name = "quizNum", nullable = false)
-    private int quizNum;
+    @Column(nullable = false)
+    private int quiz_num;
 
     @Column(nullable = false)
     private String quiz;
@@ -29,9 +27,9 @@ public class GameOXQuiz {
     private int answer;
 
     @Builder
-    public GameOXQuiz(int stageNum, int quizNum, String quiz, int answer) {
-        this.stageNum = stageNum;
-        this.quizNum = quizNum;
+    public GameOXQuiz(int stage_num, int quiz_num, String quiz, int answer) {
+        this.stage_num = stage_num;
+        this.quiz_num = quiz_num;
         this.quiz = quiz;
         this.answer = answer;
     }

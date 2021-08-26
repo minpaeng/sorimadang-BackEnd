@@ -1,5 +1,6 @@
 package com.sorimadang.sorimadang_backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sorimadang.sorimadang_backend.domain.GameOXQuiz;
 import com.sorimadang.sorimadang_backend.domain.User;
 import com.sorimadang.sorimadang_backend.dto.wrongQuiz.WrongQuizRequestDto;
@@ -18,14 +19,15 @@ public class WrongQuiz {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long serialId;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "email", nullable = false)
     private User email;
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "stageNum", referencedColumnName = "stageNum", nullable = false),
-            @JoinColumn(name = "quizNum", referencedColumnName = "quizNum", nullable = false)
+            @JoinColumn(name = "stage_num", referencedColumnName = "stage_num", nullable = false),
+            @JoinColumn(name = "quiz_num", referencedColumnName = "quiz_num", nullable = false)
     })
     private GameOXQuiz gameOXQuiz;
 
@@ -34,5 +36,4 @@ public class WrongQuiz {
         this.email = email;
         this.gameOXQuiz = gameOXQuiz;
     }
-
 }

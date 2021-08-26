@@ -1,5 +1,6 @@
 package com.sorimadang.sorimadang_backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sorimadang.sorimadang_backend.domain.Timestamped;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class User extends Timestamped {
     @Column
     private String nickname;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "email")
     List<WrongQuiz> wrongQuizs;
 
