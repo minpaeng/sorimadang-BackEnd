@@ -56,6 +56,7 @@ public class WrongQuizController {
         //해당 문제에 대한 오답노트가 이미 존재한다면(로직 구현)
         List<WrongQuiz> temp = wrongQuizRepository.findNote(email, requestDto.getStage_num(), requestDto.getQuiz_num());
         if(!temp.isEmpty()) throw new IllegalArgumentException("이미 오답노트에 존재하는 문항입니다.");
+
         //저장할 유저 가져오기
         User user = userRepository.findById(email).orElseThrow(
                 ()->new IllegalArgumentException("잘못된 계정입니다.")
@@ -76,8 +77,7 @@ public class WrongQuizController {
                 () -> new IllegalArgumentException("잘못된 접근입니다.")
         );
 
-        WrongQuizDto wrongQuizDto = new WrongQuizDto(user.getWrongQuizs());
-        System.out.println(wrongQuizDto);
+        WrongQuizDto wrongQuizDto = WrongQuizDto.builder().wrongQuizs(user.getWrongQuizs()).build();
         return wrongQuizDto;
     }
 
@@ -98,9 +98,10 @@ public class WrongQuizController {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 문제 문항입니다."));
 
         //해당 문제에 대한 오답노트가 이미 존재한다면(로직 구현)
-        List<WrongQuiz> temp = wrongQuizRepository.findNote(email, requestDto.getStage_num(), requestDto.getQuiz_num());
-        if(temp.isEmpty()) throw new IllegalArgumentException("오답노트에 존재하지 않는 문항입니다.");
+        List<WrongQuiz> wrongQuizs = wrongQuizRepository.findNote(email, requestDto.getStage_num(), requestDto.getQuiz_num());
+        if(wrongQuizs.isEmpty()) throw new IllegalArgumentException("오답노트에 존재하지 않는 문항입니다.");
 
+        wrongQuizRepository.deleteById(wrongQuizs.get(0).getSerialId());
         return gameOXQuiz;
     }
 }
