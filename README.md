@@ -13,7 +13,6 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 |닉네임 입력/수정|PUT|api/user|{<br/>"idToken":"토큰 입력",<br/> "nickname":"닉네임 입력"<br/>}|입력한 닉네임|
 |회원 정보 조회|GET|/api/users| |{<br/>"user_id":"123abc",<br/> "password":"abcd1234",<br/> "nickname":"도드리"<br/>}|
 
-
 <br/><br/>
 
 * game-ox
