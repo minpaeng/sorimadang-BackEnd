@@ -22,4 +22,4 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 |----------|-----|---------|-----------|-------------|
 |오답노트 가져오기|POST|/api/ox-game/wrong-questions/search|{<br/>"idToken":"토큰 입력"<br/>}|{<br/>"wrongQuizs": [<br/>{<br/>"serialId": 14,<br/>"gameOXQuiz": {<br/>"stage_num": 2,<br/>"quiz_num": 5,<br/>"quiz": "가야금은 10줄이다.",<br/>"answer": 0<br/>}<br/>}<br/>]<br/>}|
 |오답노트에 문제 추가|POST|/api/ox-game/wrong-questions/save|{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|{<br/>"serialId": 14,<br/>"gameOXQuiz": {<br/>"stage_num": 2,<br/>"quiz_num": 5,<br/>"quiz": "가야금은 10줄이다.",<br/>"answer": 0<br/>}<br/>}|
-|오답노트에서 문제 제거|DELETE|/api/ox-game/wrong-questions/remove |{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|{<br/>"stage_num": 1,<br/>"quiz_num": 3,<br/>"quiz": "가야금은 3줄이다.",<br/>"answer": 0<br/>}|
+|오답노트에서 문제 제거|DELETE|/api/ox-game/wrong-questions/remove |{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|오답노트 아이디(serialId)|
