@@ -5,7 +5,6 @@ import com.sorimadang.sorimadang_backend.domain.User;
 import com.sorimadang.sorimadang_backend.domain.WrongQuiz;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @RequiredArgsConstructor
 @Getter
