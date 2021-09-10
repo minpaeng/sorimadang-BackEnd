@@ -83,7 +83,7 @@ public class WrongQuizController {
 
     // 오답노트에서 문제 제거
     @DeleteMapping("/api/ox-game/wrong-questions/remove")
-    public GameOXQuiz deleteWrong(@RequestBody DeleteNoteRequestDto requestDto) throws GeneralSecurityException, IOException {
+    public Long deleteWrong(@RequestBody DeleteNoteRequestDto requestDto) throws GeneralSecurityException, IOException {
         String email = userService.verifyToken(requestDto.getIdToken());
 
         //오답노트생성이랑 코드 다 겹침 -> 함수로빼기
@@ -102,7 +102,7 @@ public class WrongQuizController {
         if(wrongQuizs.isEmpty()) throw new IllegalArgumentException("오답노트에 존재하지 않는 문항입니다.");
 
         wrongQuizRepository.deleteById(wrongQuizs.get(0).getSerialId());
-        return gameOXQuiz;
+        return wrongQuizs.get(0).getSerialId();
     }
 }
 

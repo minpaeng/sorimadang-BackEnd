@@ -16,10 +16,10 @@ public class SorimadangBackendApplication {
         SpringApplication.run(SorimadangBackendApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner demo(UserRepository userRepository) {
         return (args) -> {
             userRepository.findAll();
         };
-    }
+    }*/
 }

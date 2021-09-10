@@ -1,9 +1,7 @@
 package com.sorimadang.sorimadang_backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sorimadang.sorimadang_backend.domain.GameOXQuiz;
-import com.sorimadang.sorimadang_backend.domain.User;
-import com.sorimadang.sorimadang_backend.dto.wrongQuiz.WrongQuizRequestDto;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
