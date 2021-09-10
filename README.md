@@ -9,7 +9,7 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 |기능|Method|URL|Request|Response|
 |----------|-----|---------|-----------|-------------|
 |회원탈퇴  |DELETE|/api/user|{<br/>"idToken":"토큰 입력"<br/>}|삭제된 email 주소<br/>|
-|로그인|POST|/api/user|{<br/>"idToken":"토큰 입력"<br/>}|{<br/>"createdAt": "처음 로그인한 날짜 및 시간",<br/>"modifiedAt": "마지막 로그인한 날짜 및 시간",<br/>"email": "이메일 주소",<br/>"nickname": "닉네임"<br/>}|
+|로그인|POST|/api/user|{<br/>"idToken":"토큰 입력"<br/>}|로그인한 이메일 주소|
 |닉네임 입력/수정|PUT|api/user|{<br/>"idToken":"토큰 입력",<br/> "nickname":"닉네임 입력"<br/>}|입력한 닉네임|
 |회원 정보 조회|GET|/api/users| |{<br/>"user_id":"123abc",<br/> "password":"abcd1234",<br/> "nickname":"도드리"<br/>}|
 

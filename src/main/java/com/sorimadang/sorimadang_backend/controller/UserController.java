@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -44,14 +45,13 @@ public class UserController{
 
     //로그인: 토큰 입력
     @PostMapping("/api/user")
-    public User login(@RequestBody LoginRequestDto requestDto) throws GeneralSecurityException, IOException {
+    public String login(@RequestBody LoginRequestDto requestDto) throws GeneralSecurityException, IOException {
         String email = userService.verifyToken(requestDto.getIdToken());
         if(email == null) throw new IOException("잘못된 접근입니다.");
-        String s = "signIn";
-        User user = userRepository.findById(email)
-                .orElse(
-                        userRepository.save(requestDto.toEntity(email))
-                );
-        return user;
+        Optional<User> user = userRepository.findById(email);
+        if(!user.isPresent()) {
+            userRepository.save(requestDto.toEntity(email));
+        }
+        return email;
     }
 }
