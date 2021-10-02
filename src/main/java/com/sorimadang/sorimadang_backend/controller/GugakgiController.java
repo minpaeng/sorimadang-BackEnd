@@ -18,7 +18,7 @@ public class GugakgiController {
     private final GugakgiService gugakgiService;
 
     @GetMapping("/api/gugakgis")
-    public List<Gugakgi> getGugakgi() {
+    public List<Gugakgi> getGugakgis() {
         return gugakgiRepository.findAll();
     }
 

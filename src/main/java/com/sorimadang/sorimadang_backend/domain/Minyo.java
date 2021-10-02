@@ -7,13 +7,10 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-public class Music {
+public class Minyo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long serialId;
-
-    @Column(nullable = false)
-    String region;
+    Long id;
 
     @Column(nullable = false)
     String soundUrl;

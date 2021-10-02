@@ -19,4 +19,8 @@ public class Datatype {
     @JsonManagedReference
     @OneToMany(mappedBy = "dataType")
     List<Gugakgi> gugakgi;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "dataType")
+    List<Minyo> minyo;
 }
