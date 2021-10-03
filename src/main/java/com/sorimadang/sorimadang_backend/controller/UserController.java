@@ -9,6 +9,7 @@ import com.sorimadang.sorimadang_backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
@@ -32,8 +33,8 @@ public class UserController{
         return userService.update(requestDto);
     }
 
-    // 회원 탈퇴
-    @PostMapping("/api/user")
+    /*// 회원 탈퇴
+    @DeleteMapping("/api/user")
     public String deleteUser(@RequestBody DeleteRequestDto requestDto) throws GeneralSecurityException, IOException {
         //토큰 검증 및 email 리턴받기
         String email = userService.verifyToken(requestDto.getIdToken());
@@ -41,7 +42,7 @@ public class UserController{
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 계정이 없습니다."));
         userRepository.delete(user);
         return email;
-    }
+    }*/
 
     //로그인: 토큰 입력
     @PostMapping("/api/user")
