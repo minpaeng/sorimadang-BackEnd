@@ -82,7 +82,7 @@ public class WrongQuizController {
     }
 
     // 오답노트에서 문제 제거
-    @DeleteMapping("/api/ox-game/wrong-questions/remove")
+    @PostMapping("/api/ox-game/wrong-questions/remove")
     public Long deleteWrong(@RequestBody DeleteNoteRequestDto requestDto) throws GeneralSecurityException, IOException {
         String email = userService.verifyToken(requestDto.getIdToken());
 

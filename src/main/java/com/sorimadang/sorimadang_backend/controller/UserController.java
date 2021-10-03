@@ -33,7 +33,7 @@ public class UserController{
     }
 
     // 회원 탈퇴
-    @DeleteMapping("/api/user")
+    @PostMapping("/api/user")
     public String deleteUser(@RequestBody DeleteRequestDto requestDto) throws GeneralSecurityException, IOException {
         //토큰 검증 및 email 리턴받기
         String email = userService.verifyToken(requestDto.getIdToken());
