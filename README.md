@@ -19,9 +19,10 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 
 |기능|Method|URL|Request|Response|
 |----------|-----|---------|-----------|-------------|
+|전체 퀴즈 가져오기|GET|/api/ox-game/questions| |[<br/>{ <br/>stage_num: 1, <br/>quiz_num: 1, <br/>quiz: "전통 가야금은 줄이 12개이다.", <br/>answer: 1 <br/>}, <br/>{ <br/>stage_num: 1, <br/>quiz_num: 2, <br/>quiz: "소금은 관악기이다.", <br/>answer: 1 <br/>}<br/>]|
 |오답노트 가져오기|POST|/api/ox-game/wrong-questions/search|{<br/>"idToken":"토큰 입력"<br/>}|{<br/>"wrongQuizs": [<br/>{<br/>"serialId": 14,<br/>"gameOXQuiz": {<br/>"stage_num": 2,<br/>"quiz_num": 5,<br/>"quiz": "가야금은 10줄이다.",<br/>"answer": 0<br/>}<br/>}<br/>]<br/>}|
 |오답노트에 문제 추가|POST|/api/ox-game/wrong-questions/save|{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|{<br/>"serialId": 14,<br/>"gameOXQuiz": {<br/>"stage_num": 2,<br/>"quiz_num": 5,<br/>"quiz": "가야금은 10줄이다.",<br/>"answer": 0<br/>}<br/>}|
-|오답노트에서 문제 제거|DELETE|/api/ox-game/wrong-questions/remove |{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|{<br/>"stage_num": 1,<br/>"quiz_num": 3,<br/>"quiz": "가야금은 3줄이다.",<br/>"answer": 0<br/>}|
+|오답노트에서 문제 제거|POST|/api/ox-game/wrong-questions/remove |{<br/>"idToken":"토큰 입력",<br/>"stage_num":1,<br/>"quiz_num":3 <br/>}|{<br/>"stage_num": 1,<br/>"quiz_num": 3,<br/>"quiz": "가야금은 3줄이다.",<br/>"answer": 0<br/>}|
 
 <br/><br/>
 
@@ -29,8 +30,8 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 
 |기능|Method|URL|Request|Response|
 |----------|-----|---------|-----------|-------------|
-|전체 국악기 정보|GET|/api/gugakgis| |[<br/>{<br/>"id": 1,<br/>"akgiName": "당피리",<br/>"imageUrl": "imageUrl",<br/>"soundUrl": "soundUrl"<br/>}<br/>]|
-|관악기, 타악기, 현악기 별로 정보 가져오기|GET|/api/gugakgi?type=관악기| |{<br/>id: 1, <br/>dataType: "관악기", <br/>gugakgi: [<br/>{<br/>id: 1,<br/>akgiName: "당피리",<br/>imageUrl: "imageUrl",<br/>soundUrl: "soundUrl"<br/>}<br/>],<br/>minyo: [ ]<br/>}|
+|전체 국악기 정보|GET|/api/gugakgis| |[<br/>{<br/>"id": 1,<br/>"akgiName": "당피리",<br/>"imageUrl": "이미지 주소",<br/>"soundUrl": "음원 주소"<br/>}<br/>]|
+|관악기, 타악기, 현악기 별로 정보 가져오기|GET|/api/gugakgi?type=관악기| |{<br/>id: 1, <br/>dataType: "관악기", <br/>gugakgi: [<br/>{<br/>id: 1,<br/>akgiName: "당피리",<br/>imageUrl: "이미지 주소",<br/>soundUrl: "음원 주소"<br/>}<br/>],<br/>minyo: [ ]<br/>}|
 
 <br/><br/>
 
@@ -38,5 +39,5 @@ select query 사용(유저 오답 정보 가져올 때) / WrongQuiz(오답 정�
 
 |기능|Method|URL|Request|Response|
 |----------|-----|---------|-----------|-------------|
-|전체 민요 정보|GET|/api/minyos| |[<br/>{<br/>"id": 1,<br/>"soundUrl": "soundUrl",<br/>"title": "뱃노래"<br/>}<br/>]|
-|지역(경기, 남도, 서도, 동부, 제주) 별로 정보 가져오기|GET|/api/minyo?type=동부| |{<br/>id: 5, <br/>dataType: "동부", <br/>gugakgi: [ ], <br/>minyo: [<br/>{<br/>id: 1,<br/>soundUrl: "soundUrl", <br/>title: "뱃노래"<br/>},<br/>{ <br/>id: 2, <br/>soundUrl: "soundUrl", <br/>title: "밀양아리랑"<br/>}<br/>]<br/>}|
+|전체 민요 정보|GET|/api/minyos| |[<br/>{<br/>"id": 1,<br/>"soundUrl": "음원 주소",<br/>"title": "뱃노래"<br/>}<br/>]|
+|지역(경기, 남도, 서도, 동부, 제주) 별로 정보 가져오기|GET|/api/minyo?type=동부| |{<br/>id: 5, <br/>dataType: "동부", <br/>gugakgi: [ ], <br/>minyo: [<br/>{<br/>id: 1,<br/>soundUrl: "음원 주소", <br/>title: "뱃노래"<br/>},<br/>{ <br/>id: 2, <br/>soundUrl: "음원 주소", <br/>title: "밀양아리랑"<br/>}<br/>]<br/>}|
